@@ -4,6 +4,7 @@ import initialEmails from './data/emails'
 
 import './styles/App.css'
 import Emails from './Emails.jsx'
+import OpenEmail from './OpenEmail.jsx'
 
 const getReadEmails = emails => emails.filter(email => !email.read)
 
@@ -13,6 +14,8 @@ function App() {
   const [emails, setEmails] = useState(initialEmails)
   const [hideRead, setHideRead] = useState(false)
   const [currentTab, setCurrentTab] = useState('inbox')
+
+  const [openedEmail, setOpenedEmail] = useState(null)
 
   const unreadEmails = emails.filter(email => !email.read)
   const starredEmails = emails.filter(email => email.starred)
@@ -88,7 +91,13 @@ function App() {
           </li>
         </ul>
       </nav>
-      <Emails filteredEmails={filteredEmails} toggleRead={toggleRead} toggleStar={toggleStar} />
+      {(openedEmail && 
+        <OpenEmail email={openedEmail} updateOpenEmail={setOpenedEmail} />
+      )}
+
+      {(!openedEmail && 
+      <Emails filteredEmails={filteredEmails} toggleRead={toggleRead} toggleStar={toggleStar} updateOpenEmail={setOpenedEmail} />
+      )}
     </div>
   )
 }

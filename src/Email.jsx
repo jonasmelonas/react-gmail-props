@@ -22,8 +22,12 @@ const Email = (props) => {
                 onChange={() => props.toggleStar(props.email)}
             />
             </div>
-            <div className="sender">{props.email.sender}</div>
-            <div className="title">{props.email.title}</div>
+            
+            <div className="sender" onClick={() => props.updateOpenEmail(props.email)} >{props.email.sender}
+            </div>
+            <div className="title" onClick={() => props.updateOpenEmail(props.email)}>{props.email.title}</div>
+            
+            
         </li>
     )
 }

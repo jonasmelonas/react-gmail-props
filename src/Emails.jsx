@@ -7,7 +7,7 @@ const Emails = (props) => {
             <ul>
             {props.filteredEmails.map((email, index) => (
                 <Email key={index} email={email} toggleRead={props.toggleRead} 
-                    toggleStar={props.toggleStar} />
+                    toggleStar={props.toggleStar} updateOpenEmail={props.updateOpenEmail} />
             ))}
             </ul>
       </main>
